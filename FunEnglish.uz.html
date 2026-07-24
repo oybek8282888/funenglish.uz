@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunEnglish.uz</title>   <!-- ← CHANGED -->
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fef9f0;
+            color: #2d2a24;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            padding: 30px 50px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* ---------- HEADINGS ---------- */
+        h1 {
+            color: #1a6b6b;
+            font-size: 2.8rem;
+            border-bottom: 3px solid #d4943a;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #1a6b6b;
+            font-size: 1.8rem;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #d4943a;
+            font-size: 1.4rem;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        strong {
+            color: #1a6b6b;
+        }
+
+        /* ---------- TOP MAIN MENU - EYE-FRIENDLY WARM EARTHY ---------- */
+        .main-menu {
+            background: linear-gradient(135deg, #6b5a4a, #8a7a6a);
+            padding: 15px 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .main-menu a {
+            color: #fef9f0;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            padding: 8px 22px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .main-menu a:hover {
+            background-color: #d4943a;
+            color: #2d2a24;
+            transform: scale(1.05);
+        }
+
+        .main-menu a.active {
+            background-color: #d4943a;
+            color: #2d2a24;
+        }
+
+        /* ---------- SECTIONS ---------- */
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---------- FLOATING BUBBLES ---------- */
+        .bubble-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+            min-height: 400px;
+            position: relative;
+        }
+
+        .bubble {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            position: relative;
+        }
+
+        .bubble:nth-child(1) { animation-delay: 0s; }
+        .bubble:nth-child(2) { animation-delay: 0.4s; }
+        .bubble:nth-child(3) { animation-delay: 0.8s; }
+        .bubble:nth-child(4) { animation-delay: 1.2s; }
+        .bubble:nth-child(5) { animation-delay: 1.6s; }
+        .bubble:nth-child(6) { animation-delay: 2.0s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .bubble:hover {
+            transform: scale(1.15) !important;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        .bubble:active {
+            transform: scale(0.95) !important;
+        }
+
+        .bubble .level {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            margin-top: 3px;
+        }
+
+        .bubble .icon {
+            font-size: 2rem;
+        }
+
+        /* ---------- BUBBLE COLORS ---------- */
+        .bubble-key { background: linear-gradient(135deg, #a8e063, #56ab2f); }
+        .bubble-ket { background: linear-gradient(135deg, #f7971e, #ffd200); }
+        .bubble-pet { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
+        .bubble-fce { background: linear-gradient(135deg, #cc2b5e, #753a88); }
+        .bubble-cae { background: linear-gradient(135deg, #1f4037, #99f2c8); }
+        .bubble-ielts { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
+
+        .bubble-beginner { background: linear-gradient(135deg, #56ab2f, #a8e063); }
+        .bubble-elementary { background: linear-gradient(135deg, #f7971e, #ffd200); }
+        .bubble-pre { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
+        .bubble-intermediate { background: linear-gradient(135deg, #cc2b5e, #753a88); }
+        .bubble-upper { background: linear-gradient(135deg, #1f4037, #99f2c8); }
+        .bubble-advanced { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
+
+        /* ---------- SECTION TITLES ---------- */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a6b6b;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #5a4f44;
+            margin-bottom: 30px;
+        }
+
+        /* ---------- LEVEL CONTENT ---------- */
+        .level-content {
+            display: none;
+            background-color: #f5ede4;
+            padding: 30px 35px;
+            border-radius: 16px;
+            margin: 30px 0;
+            border-left: 6px solid #d4943a;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .level-content.active {
+            display: block;
+        }
+
+        .level-content h3 {
+            color: #1a6b6b;
+            font-size: 1.8rem;
+            margin-top: 0;
+        }
+
+        .level-content .word-card {
+            background-color: #fef9f0;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-left: 5px solid #d4943a;
+        }
+
+        /* ---------- BACK BUTTON ---------- */
+        .back-btn {
+            background-color: #6b5a4a;
+            color: #fef9f0;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #d4943a;
+            color: #2d2a24;
+        }
+
+        /* ---------- HOME CARDS ---------- */
+        .home-card {
+            padding: 40px 50px;
+            border-radius: 20px;
+            cursor: pointer;
+            text-align: center;
+            min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+            color: white;
+        }
+
+        .home-card:hover {
+            transform: scale(1.05);
+        }
+
+        .home-card .icon {
+            font-size: 3rem;
+        }
+
+        .home-card h3 {
+            color: white;
+            margin: 10px 0 5px 0;
+        }
+
+        .home-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            color: white;
+        }
+
+        /* ---------- WORD CARD (general) ---------- */
+        .word-card {
+            background-color: #f5ede4;
+            padding: 25px 35px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 5px solid #d4943a;
+        }
+
+        /* ---------- BREAK POPUP ---------- */
+        #breakPopup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        #breakPopup.active {
+            display: flex;
+        }
+
+        .popup-content {
+            background-color: #fef9f0;
+            padding: 50px 60px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 4px solid #d4943a;
+        }
+
+        .popup-content h2 {
+            color: #d4943a;
+            font-size: 2.2rem;
+            margin-top: 0;
+        }
+
+        .popup-content ul {
+            text-align: left;
+            font-size: 1.15rem;
+            line-height: 2.2;
+            margin: 20px 0;
+            padding-left: 25px;
+        }
+
+        .popup-content button {
+            background-color: #1a6b6b;
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .popup-content button:hover {
+            background-color: #135252;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 600px) {
+            body { padding: 15px 20px; }
+            h1 { font-size: 2rem; }
+            .main-menu { gap: 15px; }
+            .main-menu a { font-size: 1rem; padding: 6px 12px; }
+            .bubble { width: 100px; height: 100px; font-size: 0.8rem; }
+            .bubble .icon { font-size: 1.5rem; }
+            .popup-content { padding: 30px 25px; }
+            .home-card { padding: 25px 30px; min-width: 150px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== TOP MAIN MENU - WARM EARTHY ========== -->
+    <div class="main-menu">
+        <a href="#" class="active" onclick="showSection('home')">🏠 Home</a>
+        <a href="#" onclick="showSection('exams')">📝 International Exams</a>
+        <a href="#" onclick="showSection('general')">🌍 General English</a>
+        <a href="#" onclick="showSection('about')">👤 About</a>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ========== HOME SECTION ========== -->
+    <!-- ============================================================ -->
+    <div id="home" class="section active">
+        <h1>FunEnglish.uz</h1>   <!-- ← CHANGED -->
+        <p>Welcome to your daily English practice! 📚</p>
+        <p>Choose a path to start learning:</p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 40px 0;">
+            <div onclick="showSection('exams')" class="home-card" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                <div class="icon">📝</div>
+                <h3>International Exams</h3>
+                <p>KEY, KET, PET, FCE, CAE, IELTS</p>
+            </div>
+
+            <div onclick="showSection('general')" class="home-card" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                <div class="icon">🌍</div>
+                <h3>General English</h3>
+                <p>Beginner to Advanced</p>
+            </div>
+        </div>
+
+        <div class="word-card">
+            <h2>📖 How to Use This Page</h2>
+            <p>1. Click <strong>International Exams</strong> or <strong>General English</strong></p>
+            <p>2. Choose your <strong>level</strong> from the floating bubbles</p>
+            <p>3. Learn vocabulary and practice</p>
+            <p>4. Take an <strong>eye break</strong> every 5 minutes! 👁️</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ========== INTERNATIONAL EXAMS SECTION ========== -->
+    <!-- ============================================================ -->
+    <div id="exams" class="section">
+        <h1 class="section-title">📝 International Exams</h1>
+        <p class="section-subtitle">Choose your exam level to start learning</p>
+
+        <div class="bubble-container">
+            <div class="bubble bubble-key" onclick="showLevel('exam-key')">
+                <span class="icon">📘</span>
+                KEY
+                <span class="level">A2</span>
+            </div>
+            <div class="bubble bubble-ket" onclick="showLevel('exam-ket')">
+                <span class="icon">📗</span>
+                KET
+                <span class="level">A2</span>
+            </div>
+            <div class="bubble bubble-pet" onclick="showLevel('exam-pet')">
+                <span class="icon">📙</span>
+                PET
+                <span class="level">B1</span>
+            </div>
+            <div class="bubble bubble-fce" onclick="showLevel('exam-fce')">
+                <span class="icon">📕</span>
+                FCE
+                <span class="level">B2</span>
+            </div>
+            <div class="bubble bubble-cae" onclick="showLevel('exam-cae')">
+                <span class="icon">📓</span>
+                CAE
+                <span class="level">C1</span>
+            </div>
+            <div class="bubble bubble-ielts" onclick="showLevel('exam-ielts')">
+                <span class="icon">🌏</span>
+                IELTS
+                <span class="level">C1-C2</span>
+            </div>
+        </div>
+
+        <div id="exam-key" class="level-content">
+            <h3>📘 KEY (A2)</h3>
+            <p>Basic vocabulary for everyday situations.</p>
+            <div class="word-card"><strong>Hello</strong> – a greeting</div>
+            <div class="word-card"><strong>Thank you</strong> – expression of gratitude</div>
+            <div class="word-card"><strong>Goodbye</strong> – a farewell</div>
+            <button class="back-btn" onclick="closeLevel()">⬅ Back to Exams</button>
+        </div>
+
+        <div id="exam-ket" class="level-content">
+            <h3>📗 KET (A2)</h3>
+            <p>Basic English for simple communication.</p>
+            <div class="word-card"><strong>Family</strong> – parents, siblings, and relatives</div>
+            <div class="word-card"><strong>Food</strong> – things we eat and drink</div>
+            <div class="word-card"><strong>Weather</strong> – sunny, rainy, cloudy, etc.</div>
+            <button class="back-btn" onclick="closeLevel()">⬅ Back to Exams</button>
+        </div>
+
+        <div id="exam-pet" class="level-content">
+            <h3>📙 PET (B1)</h3>
+            <p>Intermediate vocabulary for daily life.</p>
+            <div class="word-card"><strong>Environment</strong> – the natural world around us</div>
+            <div class="word-card"><strong>Education</strong> – learning and schooling</div>
+            <div class="word-card"><strong>Health</strong> – physical and mental well-being</div>
+            <button class="back-btn" onclick="closeLevel()">⬅ Back to Exams</button>
+        </div>
+
+        <div id="exam-fce" class="level-content">
+            <h3>📕 FCE (B2)</h3>
+            <p>Upper-intermediate vocabulary for work and study.</p>
+            <div class="word-card"><strong>Globalization</strong> – worldwide integration</div>
+            <div class="word-card"><strong>Sustainable</strong> – able to be maintained</div>
+            <div class="word-card"><strong>Innovation</strong> – new ideas and methods</div>
+            <button class="back-btn" onclick="closeLevel()">⬅ Back to Exams</button>
+        </div>
+
+        <div id="exam-cae" class="level-content">
+            <h3>📓 CAE (C1)</h3>
+            <p>Advanced vocabulary for professional use.</p>
+            <div class="word-card"><strong>Meticulous</strong> – very careful and precise</div>
+            <div class="word-card"><strong>Phenomenon</strong> – a remarkable event</div>
+            <div class="word-card"><strong>Exemplary</strong> – serving as a perfect example</div>
+            <button class="back-btn" onclick="closeLevel()">⬅ Back to Exams</button>
+        </div>
+
+        <div id="exam-ielts" class="level-content">
+            <h3>🌏 IELTS (C1-C2)</h3>
+            <p>Academic vocabulary for university and migration.</p>
+            <div class="word-card"><strong>Hypothesis</strong> – a proposed explanation</div>
+            <div class="word-card"><strong>Implications</strong> – possible consequences</div>
+            <div class="word-card"><strong>Paradigm</strong> – a typical example or pattern</div>
+            <button class="back-btn" onclick="closeLevel()">⬅ Back to Exams</button>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ========== GENERAL ENGLISH SECTION ========== -->
+    <!-- ============================================================ -->
+    <div id="general" class="section">
+        <h1 class="section-title">🌍 General English</h1>
+        <p class="section-subtitle">Choose your level to start learning</p>
+
+        <div class="bubble-container">
+            <div class="bubble bubble-beginner" onclick="showLevel('gen-beginner')">
+                <span class="icon">🌟</span>
+                Beginner
+                <span class="level">A1</span>
+            </div>
+            <div class="bubble bubble-elementary" onclick="showLevel('gen-elementary')">
+                <span class="icon">📖</span>
+                Elementary
+                <span class="level">A2</span>
+            </div>
+            <div class="bubble bubble-pre" onclick="showLevel('gen-pre')">
+                <span class="icon">📚</span>
+                Pre-Intermediate
+                <span class="level">B1</span>
+            </div>
+            <div class="bubble bubble-intermediate" onclick="showLevel('gen-intermediate')">
+                <span class="icon">📝</span>
+                Intermediate
+                <span class="level">B1+</span>
+            </div>
+            <div class="bubble bubble-upper" onclick="showLevel('gen-upper')">
+                <span class="icon">📘</span>
+                Upper-Intermediate
+                <span class="level">B2</span>
+            </div>
+            <div class="bubble bubble-advanced" onclick="showLevel('gen-advanced')">
+                <span class="icon">🎓</span>
+                Advanced
+                <span class="level">C1</span>
+            </div>
+        </div>
+
+        <div id="gen-beginner" class="level-content">
+            <h3>🌟 Beginner (A1)</h3>
+            <p>Start with basic words and phrases.</p>
+            <div class="word-card"><strong>Hello</strong> – a greeting</div>
+            <div class="word-card"><strong>Goodbye</strong> – a farewell</div>
+            <div class="word-card"><strong>Yes / No</strong> – affirmation / negation</div>
+            <button class="back-btn" onclick="closeLevel()">⬅ Back to General English</button>
+        </div>
+
+        <div id="gen-elementary" class="level-content">
+            <h3>📖 Elementary (A2)</h3>
+            <p>Simple vocabulary for daily life.</p>
+            <div class="word-card"><strong>School</strong> – a place for learning</div>
+            <div class="word-card"><strong>Family</strong> – parents, siblings, relatives</div>
+            <div class="word-card"><strong>Work</strong> – a job or profession</div>
+            <button class="back-btn" onclick="closeLevel()">⬅ Back to General English</button>
+        </div>
+
+        <div id="gen-pre" class="level-content">
+            <h3>📚 Pre-Intermediate (B1)</h3>
+            <p>Build confidence in everyday conversations.</p>
+            <div class="word-card"><strong>Travel</strong> – journeying to different places</div>
+            <div class="word-card"><strong>Weather</strong> – climate conditions</div>
+            <div class="word-card"><strong>Entertainment</strong> – activities for enjoyment</div>
+            <button class="back-btn" onclick="closeLevel()">⬅ Back to General English</button>
+        </div>
+
+        <div id="gen-intermediate" class="level-content">
+            <h3>📝 Intermediate (B1+)</h3>
+            <p>Communicate effectively in most situations.</p>
+            <div class="word-card"><strong>Education</strong> – formal learning</div>
+            <div class="word-card"><strong>Health</strong> – physical well-being</div>
+            <div class="word-card"><strong>Culture</strong> – art, customs, traditions</div>
+            <button class="back-btn" onclick="closeLevel()">⬅ Back to General English</button>
+        </div>
+
+        <div id="gen-upper" class="level-content">
+            <h3>📘 Upper-Intermediate (B2)</h3>
+            <p>Express complex ideas clearly.</p>
+            <div class="word-card"><strong>Environment</strong> – nature and ecology</div>
+            <div class="word-card"><strong>Technology</strong> – modern inventions</div>
+            <div class="word-card"><strong>Psychology</strong> – mind and behavior</div>
+            <button class="back-btn" onclick="closeLevel()">⬅ Back to General English</button>
+        </div>
+
+        <div id="gen-advanced" class="level-content">
+            <h3>🎓 Advanced (C1)</h3>
+            <p>Master the language with advanced vocabulary.</p>
+            <div class="word-card"><strong>Phenomenon</strong> – remarkable event</div>
+            <div class="word-card"><strong>Exemplary</strong> – perfect example</div>
+            <div class="word-card"><strong>Innovative</strong> – introducing new ideas</div>
+            <button class="back-btn" onclick="closeLevel()">⬅ Back to General English</button>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ========== ABOUT SECTION ========== -->
+    <!-- ============================================================ -->
+    <div id="about" class="section">
+        <h1>👤 About FunEnglish.uz</h1>   <!-- ← CHANGED -->
+        <p>FunEnglish.uz is an educational platform designed to help you learn English step by step.</p>
+        <div class="word-card">
+            <h2>📌 Features</h2>
+            <p>✅ Eye-friendly colors to reduce strain</p>
+            <p>✅ 5-minute eye break reminder</p>
+            <p>✅ Vocabulary organized by levels</p>
+            <p>✅ Practice exercises</p>
+        </div>
+        <div class="word-card">
+            <h2>🙏 Thank You</h2>
+            <p>Keep learning and take care of your eyes! 👁️</p>
+        </div>
+    </div>
+
+    <!-- ========== BREAK POPUP ========== -->
+    <div id="breakPopup">
+        <div class="popup-content">
+            <h2>👁️ Time for an Eye Break!</h2>
+            <p>You've been reading for a while. Give your eyes some rest!</p>
+            <ul>
+                <li>👀 <strong>Blink</strong> rapidly for 10 seconds</li>
+                <li>🖐️ <strong>Palming</strong> – rub hands, cup eyes for 30 seconds</li>
+                <li>👁️‍🗨️ <strong>Look far away</strong> – 20 feet away for 20 seconds</li>
+                <li>😌 <strong>Close eyes</strong> and take 5 deep breaths</li>
+            </ul>
+            <button onclick="closeBreak()">✅ I've rested! Take me back</button>
+        </div>
+    </div>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+
+            document.querySelectorAll('.main-menu a').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            document.querySelector('.main-menu a[onclick="showSection(\'' + sectionId + '\')"]').classList.add('active');
+
+            document.querySelectorAll('.level-content').forEach(function(el) {
+                el.classList.remove('active');
+            });
+        }
+
+        function showLevel(levelId) {
+            document.querySelectorAll('.level-content').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            document.getElementById(levelId).classList.add('active');
+            document.getElementById(levelId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeLevel() {
+            document.querySelectorAll('.level-content').forEach(function(el) {
+                el.classList.remove('active');
+            });
+        }
+
+        setTimeout(function() {
+            document.getElementById('breakPopup').classList.add('active');
+        }, 300000);
+
+        function closeBreak() {
+            document.getElementById('breakPopup').classList.remove('active');
+        }
+    </script>
+
+</body>
+</html>
